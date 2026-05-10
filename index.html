@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RFI Form Filler – Mobile DOCX (v2)</title>
+  <title>RFI Form Filler – Mobile DOC (Phone Only)</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -107,11 +107,15 @@
   </style>
 </head>
 <body>
-  <header>RFI / WIR Form – Mobile DOCX</header>
-  <main>
+  <header>RFI / WIR Form – Mobile DOC</header>
+
+  <!-- everything inside exportArea will be exported into Word -->
+  <main id="exportArea">
     <section>
       <h2>1. Select Activity</h2>
-      <label for="activitySelect">Activity from ITP <span class="pill">built‑in list</span></label>
+      <label for="activitySelect">
+        Activity from ITP <span class="pill">built‑in list</span>
+      </label>
       <select id="activitySelect">
         <option value="0">6.1 — Excavation</option>
         <option value="1">5 / 6.2 — Sand Bed + Cable Laying</option>
@@ -243,12 +247,17 @@
 
   <div class="btn-bar">
     <button class="btn btn-secondary" id="resetBtn">Reset</button>
-    <button class="btn btn-primary" id="genBtn">Generate DOCX</button>
+    <button class="btn btn-primary" id="genBtn">Generate DOC</button>
   </div>
 
-  <script src="./docx.js"></script>
   <script>
-    const GLOBAL_REFS = {"ITP NO.": "EGY2001-G000-___-&EQA-00001", "MOS": "EGY2001-G000-___-&EDC-00001", "ICL": "EGY2001-G000-___-&EDC-00004"};
+    // Built‑in ITP references
+    const GLOBAL_REFS = {
+      "ITP NO.": "EGY2001-G000-___-&EQA-00001",
+      "MOS": "EGY2001-G000-___-&EDC-00001",
+      "ICL": "EGY2001-G000-___-&EDC-00004"
+    };
+
     const ACTIVITIES = [
       {activity: "Excavation", itp_point: "6.1", description: "Check Trench Excavation as per drawing", rfi_code: "EGY2001-MV-EL-EX-RFI-0000x"},
       {activity: "Sand Bed + Cable Laying", itp_point: "5 / 6.2", description: "Sand Bedding with Cable Laying & dressing", rfi_code: "EGY2001-MV-EL-CL-RFI-0000x"},
@@ -277,6 +286,7 @@
       const itpNo = GLOBAL_REFS['ITP NO.'] || '';
       const mos   = GLOBAL_REFS['MOS'] || '';
       const icl   = GLOBAL_REFS['ICL'] || '';
+
       document.getElementById('itpItem').value   = a.itp_point;
       document.getElementById('p2ItpItem').value = a.itp_point;
       document.getElementById('itpRef').value    = itpNo;
@@ -288,98 +298,65 @@
       document.getElementById('rfiRef').value    = a.rfi_code || '';
       document.getElementById('p2Rfi').value     = a.rfi_code || '';
       document.getElementById('desc').value      = a.description || '';
+
       const warn = a.rfi_code ? '' : '  ⚠ No RFI code in ITP – fill manually';
-      actInfo.textContent = `ITP ${a.itp_point}: ${a.description}${warn}`;
+      actInfo.textContent = 'ITP ' + a.itp_point + ': ' + a.description + warn;
     }
 
     activitySelect.addEventListener('change', onActivityChange);
-    window.addEventListener('DOMContentLoaded', () => {
-      activitySelect.value = '1';
+    window.addEventListener('DOMContentLoaded', function () {
+      activitySelect.value = '1'; // default Sand Bed + Cable Laying
       onActivityChange();
     });
 
-    function get(id) { return document.getElementById(id).value || ''; }
+    function get(id) {
+      return document.getElementById(id).value || '';
+    }
 
-    async function generateDocx() {
-      const d = {
-        rfiRef: get('rfiRef'), mosRef: get('mosRef'), itpRef: get('itpRef'), iclRef: get('iclRef'),
-        zone: get('zone'), inspDate: get('inspDate'), inspTime: get('inspTime'), subDate: get('subDate'),
-        itpItem: get('itpItem'), pcOwner: get('pcOwner'), desc: get('desc'),
-        p2Icl: get('p2Icl'), p2Mos: get('p2Mos'), p2Itp: get('p2Itp'), p2Rfi: get('p2Rfi'),
-        p2InspDate: get('p2InspDate'), location: get('location'), wtgNo: get('wtgNo'),
-        loopNo: get('loopNo'), p2ItpItem: get('p2ItpItem'),
-      };
+    // Export main area HTML to a .doc file (Word‑openable) – no external libs
+    function generateDoc() {
+      var elementId = 'exportArea';
 
-      const { Document, Packer, Paragraph, Table, TableRow, TableCell } = docx;
+      var header =
+        "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
+        "xmlns:w='urn:schemas-microsoft-com:office:word' " +
+        "xmlns='http://www.w3.org/TR/REC-html40'>" +
+        "<head><meta charset='utf-8'><title>RFI</title></head><body>";
 
-      const rows1 = [
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('RFI / WIR Ref. No.')] }), new TableCell({ children: [ new Paragraph(d.rfiRef || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('MoS Ref. No.')] }),      new TableCell({ children: [ new Paragraph(d.mosRef || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('ITP / FQP Ref. No.')] }), new TableCell({ children: [ new Paragraph(d.itpRef || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('ICL Ref. No.')] }),      new TableCell({ children: [ new Paragraph(d.iclRef || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('Zone')] }),              new TableCell({ children: [ new Paragraph(d.zone || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('Inspection Date / Time')] }), new TableCell({ children: [ new Paragraph(`${d.inspDate}  ${d.inspTime}`.trim()) ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('Submission Date')] }),   new TableCell({ children: [ new Paragraph(d.subDate || '') ] }) ] }),
-      ];
+      var footer = "</body></html>";
 
-      const rows2 = [
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('ITP Item / Sr. No.')] }), new TableCell({ children: [ new Paragraph(d.itpItem || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('PC / Owner')] }),       new TableCell({ children: [ new Paragraph(d.pcOwner || '') ] }) ] }),
-      ];
+      var sourceHTML = header +
+        document.getElementById(elementId).innerHTML +
+        footer;
 
-      const rows3 = [
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('ICL No.')] }),           new TableCell({ children: [ new Paragraph(d.p2Icl || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('MoS No.')] }),           new TableCell({ children: [ new Paragraph(d.p2Mos || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('ITP No.')] }),           new TableCell({ children: [ new Paragraph(d.p2Itp || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('RFI No.')] }),           new TableCell({ children: [ new Paragraph(d.p2Rfi || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('Inspection Date')] }),   new TableCell({ children: [ new Paragraph(d.p2InspDate || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('Location (from → to)')] }), new TableCell({ children: [ new Paragraph(d.location || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('WTG No.')] }),           new TableCell({ children: [ new Paragraph(d.wtgNo || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('Loop No.')] }),          new TableCell({ children: [ new Paragraph(d.loopNo || '') ] }) ] }),
-        new TableRow({ children: [ new TableCell({ children: [new Paragraph('ITP Item / Sr. No.')] }), new TableCell({ children: [ new Paragraph(d.p2ItpItem || '') ] }) ] }),
-      ];
+      var source =
+        'data:application/vnd.ms-word;charset=utf-8,' +
+        encodeURIComponent(sourceHTML);
 
-      const doc = new Document({
-        sections: [{
-          properties: { margin: { top: 720, right: 720, bottom: 720, left: 720 } },
-          children: [
-            new Paragraph({ text: 'REQUEST FOR INSPECTION / WORK INSPECTION REQUEST (RFI / WIR)', bold: true }),
-            new Paragraph(''),
-            new Table({ rows: rows1 }),
-            new Paragraph(''),
-            new Table({ rows: rows2 }),
-            new Paragraph(''),
-            new Paragraph({ text: 'Description of Inspection', bold: true }),
-            new Paragraph(d.desc || ''),
-            new Paragraph(''),
-            new Paragraph({ text: 'Inspection Checklist Header (Page 2)', bold: true }),
-            new Table({ rows: rows3 }),
-          ],
-        }],
-      });
+      var fileDownload = document.createElement("a");
+      document.body.appendChild(fileDownload);
+      fileDownload.href = source;
 
-      const blob = await Packer.toBlob(doc);
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      const today = new Date().toISOString().slice(0,10);
-      a.href = url;
-      a.download = `RFI_${today}.docx`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      var today = new Date().toISOString().slice(0, 10);
+      fileDownload.download = 'RFI_' + today + '.doc';
+      fileDownload.click();
+      document.body.removeChild(fileDownload);
 
-      const el = document.getElementById('exportStatus');
-      el.textContent = 'DOCX generated and downloaded to your device.';
+      var el = document.getElementById('exportStatus');
+      el.textContent = 'DOC file generated and downloaded to your device.';
       el.className = 'status ok';
     }
 
-    document.getElementById('genBtn').addEventListener('click', generateDocx);
-    document.getElementById('resetBtn').addEventListener('click', () => {
-      document.querySelectorAll('input[type=text], input[type=date], textarea').forEach(el => el.value = '');
+    document.getElementById('genBtn').addEventListener('click', generateDoc);
+    document.getElementById('resetBtn').addEventListener('click', function () {
+      document
+        .querySelectorAll('input[type=text], input[type=date], textarea')
+        .forEach(function (el) { el.value = ''; });
+
       activitySelect.value = '1';
       onActivityChange();
       document.getElementById('exportStatus').textContent = '';
+      document.getElementById('exportStatus').className = 'status';
     });
   </script>
 </body>
