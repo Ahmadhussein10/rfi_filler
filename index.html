@@ -4,9 +4,7 @@
   <meta charset="UTF-8" />
   <title>RFI / WIR – MV Cable Laying</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       padding: 20px;
@@ -14,24 +12,25 @@
       background: #e5e7eb;
     }
 
+    /* A4 page */
     .page {
       width: 210mm;
       min-height: 297mm;
       margin: 0 auto;
-      padding: 15mm;
+      padding: 12mm 10mm;
       background: #ffffff;
       border: 1px solid #000;
     }
 
-    h1, h2, h3 {
+    h1, h2, h3, p {
       margin: 0;
       padding: 0;
     }
 
     .rfi-header {
       border: 1px solid #000;
-      padding: 6px;
-      font-size: 12px;
+      padding: 4px;
+      font-size: 11px;
     }
 
     .rfi-header-table {
@@ -41,12 +40,12 @@
 
     .rfi-header-table td {
       vertical-align: top;
-      padding: 3px 4px;
+      padding: 2px 4px;
     }
 
     .rfi-title {
       font-weight: bold;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .rfi-label {
@@ -58,10 +57,10 @@
     }
 
     .section-title {
-      margin-top: 6px;
-      padding: 4px;
+      margin-top: 4px;
+      padding: 3px 4px;
       font-weight: bold;
-      font-size: 12px;
+      font-size: 11px;
       border: 1px solid #000;
       background: #f3f4f6;
       text-transform: uppercase;
@@ -70,13 +69,13 @@
     .table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 11px;
+      font-size: 10px;
     }
 
     .table th,
     .table td {
       border: 1px solid #000;
-      padding: 3px 4px;
+      padding: 2px 3px;
     }
 
     .table th {
@@ -86,28 +85,37 @@
     }
 
     .table-small-text {
-      font-size: 10px;
+      font-size: 9px;
     }
 
+    .mt-2 { margin-top: 2px; }
     .mt-4 { margin-top: 4px; }
     .mt-6 { margin-top: 6px; }
     .mt-8 { margin-top: 8px; }
-    .mb-4 { margin-bottom: 4px; }
+    .mb-2 { margin-bottom: 2px; }
 
     .desc-box {
-      margin-top: 6px;
+      margin-top: 4px;
       border: 1px solid #000;
       padding: 4px;
-      font-size: 11px;
+      font-size: 10px;
     }
 
     .desc-box-title {
       font-weight: bold;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
+    }
+
+    .center { text-align: center; }
+
+    .checkbox-cell {
+      text-align: center;
+      width: 18px;
     }
 
     .signatures-table td {
-      height: 18px;
+      height: 16px;
+      vertical-align: middle;
     }
   </style>
 </head>
@@ -172,7 +180,7 @@
   </table>
 
   <!-- LOCATION / ZONE BLOCK -->
-  <table class="table mt-6 table-small-text">
+  <table class="table mt-4 table-small-text">
     <tr>
       <td style="width:50%;">
         <strong>Location/Area: South Plot</strong>
@@ -245,15 +253,157 @@
   </table>
 
   <!-- DESCRIPTION OF INSPECTION -->
-  <div class="desc-box mt-6">
+  <div class="desc-box mt-4">
     <div class="desc-box-title">Description of Inspection:</div>
     <div id="desc">
       <strong>Checking Sand Bedding with Cable Laying &amp; dressing for the MV cable from MDA 28 to MDA 29</strong>
     </div>
   </div>
 
-  <!-- You can continue here with “Associated EPC Disciplines” and signature tables
-       using the same .table class to match the remaining part of page 1. -->
+  <!-- ASSOCIATED EPC DISCIPLINES -->
+  <div class="section-title mt-6">
+    ASSOCIATED EPC DISCIPLINES INSPECTION &amp; APPROVAL
+  </div>
+
+  <table class="table mt-2 table-small-text">
+    <tr>
+      <th style="width:30%;">Discipline</th>
+      <th>Comments</th>
+    </tr>
+    <tr>
+      <td><strong>Survey</strong></td>
+      <td id="discSurvey">N/A</td>
+    </tr>
+    <tr>
+      <td><strong>Civil &amp; Architecture</strong></td>
+      <td id="discCivil">N/A</td>
+    </tr>
+    <tr>
+      <td><strong>Steel Structure</strong></td>
+      <td id="discSteel">N/A</td>
+    </tr>
+    <tr>
+      <td><strong>Mechanical</strong></td>
+      <td id="discMech">N/A</td>
+    </tr>
+    <tr>
+      <td><strong>Electrical</strong></td>
+      <td id="discElec">NO COMMENT</td>
+    </tr>
+    <tr>
+      <td><strong>Others (Specify)</strong></td>
+      <td id="discOther"></td>
+    </tr>
+  </table>
+
+  <!-- SIGNATURES ROW -->
+  <table class="table mt-4 table-small-text signatures-table">
+    <tr>
+      <th style="width:20%;">Subcontractor QC</th>
+      <th style="width:20%;">EPC QC</th>
+      <th style="width:20%;">TPA / TPI</th>
+      <th style="width:20%;">Vendor / Supplier</th>
+      <th style="width:20%;">Sub-Vendor / Sub-Supplier</th>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td>Name:</td>
+      <td>Name:</td>
+      <td>Name:</td>
+      <td>Name:</td>
+    </tr>
+    <tr>
+      <td>Signature:</td>
+      <td>Signature:</td>
+      <td>Signature:</td>
+      <td>Signature:</td>
+      <td>Signature:</td>
+    </tr>
+    <tr>
+      <td>Date:</td>
+      <td>Date:</td>
+      <td>Date:</td>
+      <td>Date:</td>
+      <td>Date:</td>
+    </tr>
+  </table>
+
+  <!-- SECTION 2 – PC / OWNER ACKNOWLEDGEMENT -->
+  <div class="section-title mt-6">
+    SECTION – 2: RFI ACKNOWLEDGEMENT FROM PC / OWNER
+  </div>
+
+  <table class="table mt-2 table-small-text">
+    <tr>
+      <td style="width:25%;"><strong>Acknowledged</strong></td>
+      <td class="checkbox-cell">[ ]</td>
+      <td style="width:25%;"><strong>Return with comments</strong></td>
+      <td class="checkbox-cell">[ ]</td>
+      <td></td>
+    </tr>
+  </table>
+
+  <table class="table mt-2 table-small-text">
+    <tr>
+      <td>
+        <strong>Supporting Document / Objective evidence:</strong>
+        (RFI, DWGs, Survey Rept., MTC's, Test Rept., Photos, etc.)
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Comments:</strong><br><br><br></td>
+    </tr>
+  </table>
+
+  <!-- SECTION 3 – OWNER ENGINEER COMMENTS -->
+  <div class="section-title mt-6">
+    SECTION – 3: OWNER ENGINEER INSPECTION COMMENTS
+  </div>
+
+  <table class="table mt-2 table-small-text">
+    <tr>
+      <td><br><br><br><br></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Supporting Document / Objective evidence:</strong>
+      </td>
+    </tr>
+  </table>
+
+  <table class="table mt-2 table-small-text">
+    <tr>
+      <td style="width:20%;"><strong>Approved</strong></td>
+      <td class="checkbox-cell">[ ]</td>
+      <td style="width:30%;"><strong>Approved with comments</strong></td>
+      <td class="checkbox-cell">[ ]</td>
+      <td style="width:20%;"><strong>Rejected</strong></td>
+      <td class="checkbox-cell">[ ]</td>
+    </tr>
+  </table>
+
+  <table class="table mt-2 table-small-text">
+    <tr>
+      <th style="width:50%;">OWNER 3rd party inspector SIGNATURE:</th>
+      <th style="width:25%;">DATE:</th>
+      <th style="width:25%;">TIME:</th>
+    </tr>
+    <tr>
+      <td style="height:16px;"></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>OWNER / PC ENGINEER SIGNATURE:</th>
+      <th>DATE:</th>
+      <th>TIME:</th>
+    </tr>
+    <tr>
+      <td style="height:16px;"></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
 
 </div>
 
