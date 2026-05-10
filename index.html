@@ -5,11 +5,20 @@
   <title>RFI / WIR – MV Cable Laying</title>
   <style>
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       padding: 20px;
       font-family: Arial, sans-serif;
-      background: #e5e7eb;
+      background: #e5e7eb; /* page background (outside sheet) */
+    }
+
+    /* === COLORS (approx. Word default) === */
+    :root {
+      --border-color: #000000;
+      --header-bg:   #d9d9d9;  /* section headers */
+      --table-header-bg: #f2f2f2;
+      --text-main:   #000000;
     }
 
     /* A4 page */
@@ -19,7 +28,8 @@
       margin: 0 auto;
       padding: 12mm 10mm;
       background: #ffffff;
-      border: 1px solid #000;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
     }
 
     h1, h2, h3, p {
@@ -27,8 +37,9 @@
       padding: 0;
     }
 
+    /* Top RFI header box */
     .rfi-header {
-      border: 1px solid #000;
+      border: 1px solid var(--border-color);
       padding: 4px;
       font-size: 11px;
     }
@@ -46,6 +57,8 @@
     .rfi-title {
       font-weight: bold;
       font-size: 13px;
+      text-align: left;
+      text-transform: uppercase;
     }
 
     .rfi-label {
@@ -56,16 +69,18 @@
       font-weight: bold;
     }
 
+    /* Section titles */
     .section-title {
       margin-top: 4px;
       padding: 3px 4px;
       font-weight: bold;
       font-size: 11px;
-      border: 1px solid #000;
-      background: #f3f4f6;
+      border: 1px solid var(--border-color);
+      background: var(--header-bg);
       text-transform: uppercase;
     }
 
+    /* Generic table */
     .table {
       width: 100%;
       border-collapse: collapse;
@@ -74,12 +89,12 @@
 
     .table th,
     .table td {
-      border: 1px solid #000;
+      border: 0.75px solid var(--border-color);
       padding: 2px 3px;
     }
 
     .table th {
-      background: #f9fafb;
+      background: var(--table-header-bg);
       font-weight: bold;
       text-align: left;
     }
@@ -92,11 +107,10 @@
     .mt-4 { margin-top: 4px; }
     .mt-6 { margin-top: 6px; }
     .mt-8 { margin-top: 8px; }
-    .mb-2 { margin-bottom: 2px; }
 
     .desc-box {
       margin-top: 4px;
-      border: 1px solid #000;
+      border: 1px solid var(--border-color);
       padding: 4px;
       font-size: 10px;
     }
@@ -105,8 +119,6 @@
       font-weight: bold;
       margin-bottom: 3px;
     }
-
-    .center { text-align: center; }
 
     .checkbox-cell {
       text-align: center;
@@ -132,7 +144,7 @@
             REQUEST FOR INSPECTION / WORK INSPECTION REQUEST (RFI/WIR)
           </div>
         </td>
-        <td style="width:35%; border-left:1px solid #000;">
+        <td style="width:35%; border-left:1px solid var(--border-color);">
           <div>
             <span class="rfi-label">RFI/WIR Ref. No.:</span>
             <span class="rfi-value" id="rfiRef">EGY2001-MV-EL-CL-RFI-00007</span>
@@ -241,7 +253,7 @@
     </tr>
   </table>
 
-  <!-- SUPPORTING DOCUMENTS ROW (simplified) -->
+  <!-- SUPPORTING DOCUMENTS ROW -->
   <table class="table mt-4 table-small-text">
     <tr>
       <td>
@@ -256,7 +268,9 @@
   <div class="desc-box mt-4">
     <div class="desc-box-title">Description of Inspection:</div>
     <div id="desc">
-      <strong>Checking Sand Bedding with Cable Laying &amp; dressing for the MV cable from MDA 28 to MDA 29</strong>
+      <strong>
+        Checking Sand Bedding with Cable Laying &amp; dressing for the MV cable from MDA 28 to MDA 29
+      </strong>
     </div>
   </div>
 
@@ -337,7 +351,7 @@
     <tr>
       <td style="width:25%;"><strong>Acknowledged</strong></td>
       <td class="checkbox-cell">[ ]</td>
-      <td style="width:25%;"><strong>Return with comments</strong></td>
+      <td style="width:30%;"><strong>Return with comments</strong></td>
       <td class="checkbox-cell">[ ]</td>
       <td></td>
     </tr>
