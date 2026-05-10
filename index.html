@@ -10,33 +10,17 @@
       margin: 0;
       padding: 20px;
       font-family: Arial, sans-serif;
-      background: #e5e7eb; /* page background */
+      background: #e5e7eb; /* outside page */
     }
 
-    /* === COLOR PALETTE (EDIT HERE) === */
     :root {
       --border-color: #000000;
-
-      /* Header strip (form title) */
-      --header-strip-bg: #14375f;   /* dark blue */
-      --header-strip-text: #ffffff; /* white */
-
-      /* Right-side ref box background */
-      --ref-box-bg: #eaf1fb;        /* very light blue */
-
-      /* Section header bars */
-      --section-bg: #d9e2f3;        /* light blue-grey */
-      --section-text: #000000;
-
-      /* Table headers */
-      --table-header-bg: #e6eef9;   /* pale blue */
-      --table-header-text: #000000;
-
-      --page-bg: #ffffff;
+      --section-bg:  #d9d9d9;  /* light grey like Word */
+      --table-header-bg: #f2f2f2;
       --text-main: #000000;
+      --page-bg: #ffffff;
     }
 
-    /* A4 page */
     .page {
       width: 210mm;
       min-height: 297mm;
@@ -52,36 +36,33 @@
       padding: 0;
     }
 
-    /* Top RFI header box */
+    /* HEADER BLOCK – matches DOCX structure */
     .rfi-header {
       border: 1px solid var(--border-color);
-      padding: 0;
       font-size: 11px;
-    }
-
-    .rfi-header-table {
-      width: 100%;
       border-collapse: collapse;
+      width: 100%;
     }
 
-    .rfi-header-table td {
+    .rfi-header td {
+      border-bottom: 1px solid var(--border-color);
+      padding: 2px 4px;
       vertical-align: top;
-      padding: 0;
     }
 
-    .rfi-title-strip {
-      background: var(--header-strip-bg);
-      color: var(--header-strip-text);
-      padding: 4px 6px;
+    .rfi-header tr:last-child td {
+      border-bottom: none;
+    }
+
+    .rfi-header-title-row td {
+      background: #d9d9d9;  /* shaded title row */
       font-weight: bold;
-      font-size: 13px;
-      text-transform: uppercase;
     }
 
-    .rfi-ref-box {
-      border-left: 1px solid var(--border-color);
-      background: var(--ref-box-bg);
-      padding: 4px 6px;
+    .rfi-title {
+      font-weight: bold;
+      font-size: 12px;
+      text-transform: uppercase;
     }
 
     .rfi-label {
@@ -92,7 +73,6 @@
       font-weight: bold;
     }
 
-    /* Section titles */
     .section-title {
       margin-top: 4px;
       padding: 3px 4px;
@@ -100,11 +80,9 @@
       font-size: 11px;
       border: 1px solid var(--border-color);
       background: var(--section-bg);
-      color: var(--section-text);
       text-transform: uppercase;
     }
 
-    /* Generic table */
     .table {
       width: 100%;
       border-collapse: collapse;
@@ -119,7 +97,6 @@
 
     .table th {
       background: var(--table-header-bg);
-      color: var(--table-header-text);
       font-weight: bold;
       text-align: left;
     }
@@ -138,7 +115,6 @@
       border: 1px solid var(--border-color);
       padding: 4px;
       font-size: 10px;
-      background: #ffffff;
     }
 
     .desc-box-title {
@@ -161,42 +137,55 @@
 
 <div class="page" id="exportArea">
 
-  <!-- HEADER -->
-  <div class="rfi-header">
-    <table class="rfi-header-table">
-      <tr>
-        <td style="width:65%;">
-          <div class="rfi-title-strip">
-            REQUEST FOR INSPECTION / WORK INSPECTION REQUEST (RFI/WIR)
-          </div>
-        </td>
-        <td style="width:35%;">
-          <div class="rfi-ref-box">
-            <div>
-              <span class="rfi-label">RFI/WIR Ref. No.:</span>
-              <span class="rfi-value" id="rfiRef">EGY2001-MV-EL-CL-RFI-00007</span>
-            </div>
-            <div>
-              <span class="rfi-label">MoS Ref. No.:</span>
-              <span class="rfi-value" id="mosRef">EGY2001-G000-___-&EDC-00001</span>
-            </div>
-            <div>
-              <span class="rfi-label">ITP/FQP Ref. No.:</span>
-              <span class="rfi-value" id="itpRef">EGY2001-G000-___-&EQA-00001</span>
-            </div>
-            <div>
-              <span class="rfi-label">ICL Ref. No.:</span>
-              <span class="rfi-value" id="iclRef">EGY2001-G000-___-&EDC-00004</span>
-            </div>
-          </div>
-        </td>
-      </tr>
-    </table>
-  </div>
+  <!-- HEADER – now mirrors DOCX rows -->
+  <table class="rfi-header">
+    <!-- Row 1: Title + RFI/WIR Ref. No. -->
+    <tr class="rfi-header-title-row">
+      <td style="width:65%;">
+        <span class="rfi-title">
+          REQUEST FOR INSPECTION/ WORK INSPECTION REQUEST (RFI/WIR)
+        </span>
+      </td>
+      <td style="width:35%; text-align:right;">
+        <span class="rfi-label">RFI/WIR Ref. No. </span>
+        <span class="rfi-value" id="rfiRef">EGY2001-MV-EL-CL-RFI-00007</span>
+      </td>
+    </tr>
+
+    <!-- Row 2: MoS Ref. No. -->
+    <tr>
+      <td></td>
+      <td style="text-align:right;">
+        <span class="rfi-label">MoS Ref. No. </span>
+        <span class="rfi-value" id="mosRef">EGY2001-G000-___-&EDC-00001</span>
+      </td>
+    </tr>
+
+    <!-- Row 3: ITP/FQP Ref. No. -->
+    <tr>
+      <td></td>
+      <td style="text-align:right;">
+        <span class="rfi-label">ITP/FQP Ref. No. </span>
+        <span class="rfi-value" id="itpRef">EGY2001-G000-___-&EQA-00001</span>
+      </td>
+    </tr>
+
+    <!-- Row 4: Discipline line + ICL Ref. No. -->
+    <tr>
+      <td>
+        <span class="rfi-label">Discipline: </span>
+        Civil&nbsp;&nbsp;Mechanical&nbsp;&nbsp;Electrical&nbsp;&nbsp;I &amp; C&nbsp;&nbsp;Machinery&nbsp;&nbsp;Welding&nbsp;&nbsp;Piping&nbsp;&nbsp;Other (pls specify)
+      </td>
+      <td style="text-align:right;">
+        <span class="rfi-label">ICL Ref. No. </span>
+        <span class="rfi-value" id="iclRef">EGY2001-G000-___-&EDC-00004</span>
+      </td>
+    </tr>
+  </table>
 
   <!-- SECTION 1 TITLE -->
   <div class="section-title">
-    SECTION – 1: DETAILS OF INSPECTION
+    SECTION -- 1: DETAILS OF INSPECTION
   </div>
 
   <!-- INSPECTION LEVEL TABLE -->
@@ -286,8 +275,8 @@
     <tr>
       <td>
         <strong>Supporting Documents attachment:</strong>
-        ICL, DWGs, Survey Rept., MTC's / Test Rept., Packing list, Shipping doc.,
-        Delivery Rept., Photos, Other (pls specify)
+        ICL DWGs Survey Rept. MTC's/ Test Rept. Packing list Shipping doc.
+        Delivery Rept. Photos Other pls Specify
       </td>
     </tr>
   </table>
@@ -348,104 +337,29 @@
       <th style="width:20%;">Sub-Vendor / Sub-Supplier</th>
     </tr>
     <tr>
-      <td>Name:</td>
-      <td>Name:</td>
-      <td>Name:</td>
-      <td>Name:</td>
-      <td>Name:</td>
+      <td>Name</td>
+      <td>Name</td>
+      <td>Name</td>
+      <td>Name</td>
+      <td>Name</td>
     </tr>
     <tr>
-      <td>Signature:</td>
-      <td>Signature:</td>
-      <td>Signature:</td>
-      <td>Signature:</td>
-      <td>Signature:</td>
+      <td>Signature</td>
+      <td>Signature</td>
+      <td>Signature</td>
+      <td>Signature</td>
+      <td>Signature</td>
     </tr>
     <tr>
-      <td>Date:</td>
-      <td>Date:</td>
-      <td>Date:</td>
-      <td>Date:</td>
-      <td>Date:</td>
+      <td>Date</td>
+      <td>Date</td>
+      <td>Date</td>
+      <td>Date</td>
+      <td>Date</td>
     </tr>
   </table>
 
-  <!-- SECTION 2 – PC / OWNER ACKNOWLEDGEMENT -->
-  <div class="section-title mt-6">
-    SECTION – 2: RFI ACKNOWLEDGEMENT FROM PC / OWNER
-  </div>
-
-  <table class="table mt-2 table-small-text">
-    <tr>
-      <td style="width:25%;"><strong>Acknowledged</strong></td>
-      <td class="checkbox-cell">[ ]</td>
-      <td style="width:30%;"><strong>Return with comments</strong></td>
-      <td class="checkbox-cell">[ ]</td>
-      <td></td>
-    </tr>
-  </table>
-
-  <table class="table mt-2 table-small-text">
-    <tr>
-      <td>
-        <strong>Supporting Document / Objective evidence:</strong>
-        (RFI, DWGs, Survey Rept., MTC's, Test Rept., Photos, etc.)
-      </td>
-    </tr>
-    <tr>
-      <td><strong>Comments:</strong><br><br><br></td>
-    </tr>
-  </table>
-
-  <!-- SECTION 3 – OWNER ENGINEER COMMENTS -->
-  <div class="section-title mt-6">
-    SECTION – 3: OWNER ENGINEER INSPECTION COMMENTS
-  </div>
-
-  <table class="table mt-2 table-small-text">
-    <tr>
-      <td><br><br><br><br></td>
-    </tr>
-    <tr>
-      <td>
-        <strong>Supporting Document / Objective evidence:</strong>
-      </td>
-    </tr>
-  </table>
-
-  <table class="table mt-2 table-small-text">
-    <tr>
-      <td style="width:20%;"><strong>Approved</strong></td>
-      <td class="checkbox-cell">[ ]</td>
-      <td style="width:30%;"><strong>Approved with comments</strong></td>
-      <td class="checkbox-cell">[ ]</td>
-      <td style="width:20%;"><strong>Rejected</strong></td>
-      <td class="checkbox-cell">[ ]</td>
-    </tr>
-  </table>
-
-  <table class="table mt-2 table-small-text">
-    <tr>
-      <th style="width:50%;">OWNER 3rd party inspector SIGNATURE:</th>
-      <th style="width:25%;">DATE:</th>
-      <th style="width:25%;">TIME:</th>
-    </tr>
-    <tr>
-      <td style="height:16px;"></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>OWNER / PC ENGINEER SIGNATURE:</th>
-      <th>DATE:</th>
-      <th>TIME:</th>
-    </tr>
-    <tr>
-      <td style="height:16px;"></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
+  <!-- SECTION 2 AND 3 (you can keep from previous version if you already like them) -->
 
 </div>
 
