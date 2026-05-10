@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RFI Form Filler – Mobile DOCX (v2)</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f3f5f8;
+      color: #1f2933;
+    }
+    header {
+      padding: 12px 16px;
+      background: #1e3a5f;
+      color: #fff;
+      text-align: center;
+      font-weight: 600;
+    }
+    main {
+      padding: 12px;
+      max-width: 720px;
+      margin: 0 auto 90px auto;
+    }
+    h2 {
+      margin: 16px 0 8px;
+      font-size: 1rem;
+      color: #102a43;
+    }
+    section {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+    }
+    label {
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 3px;
+      color: #52606d;
+    }
+    input[type="text"], input[type="date"], select, textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #d8e2ec;
+      font-size: 0.9rem;
+      background: #fdfefe;
+    }
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: 2px solid #1e3a5f;
+      outline-offset: 1px;
+      border-color: #1e3a5f;
+    }
+    .row { display: flex; gap: 8px; }
+    .row > div { flex: 1; }
+    .chip {
+      font-size: 0.72rem;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #f0f4f8;
+      color: #52606d;
+      display: inline-block;
+      margin-top: 4px;
+    }
+    .pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #e4f0fb;
+      color: #1f4b99;
+      margin-left: 6px;
+    }
+    .btn-bar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      background: #f9fafb;
+      border-top: 1px solid #d8e2ec;
+      padding: 8px 12px 10px;
+      display: flex;
+      gap: 8px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .btn {
+      flex: 1;
+      border-radius: 999px;
+      border: none;
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-primary { background: #1e3a5f; color: #fff; }
+    .btn-secondary { background: #e4f0fb; color: #102a43; }
+    .status { font-size: 0.78rem; margin-top: 4px; color: #52606d; }
+    .status.ok { color: #057a55; }
+    .status.err { color: #c81e1e; }
+  </style>
+</head>
+<body>
+  <header>RFI / WIR Form – Mobile DOCX</header>
+  <main>
+    <section>
+      <h2>1. Select Activity</h2>
+      <label for="activitySelect">Activity from ITP <span class="pill">built‑in list</span></label>
+      <select id="activitySelect">
+        <option value="0">6.1 — Excavation</option>
+        <option value="1">5 / 6.2 — Sand Bed + Cable Laying</option>
+        <option value="2">6.3 — Sand Cover + Earthing</option>
+        <option value="3">6.4 — First Backfill + Warning Tape</option>
+        <option value="4">6.5 — Final Backfill</option>
+        <option value="5">7.1 — Excavation (Road crossing)</option>
+        <option value="6">7.2 — HDPE Pipes</option>
+        <option value="7">7.3 — Concrete</option>
+        <option value="8">7.4 — First Backfill + Warning Tape (Road crossing)</option>
+        <option value="9">7.5 — Final Backfill (Road crossing)</option>
+        <option value="10">8 — Jointing</option>
+        <option value="11">8 — Termination</option>
+      </select>
+      <div id="actInfo" class="chip"></div>
+    </section>
+
+    <section>
+      <h2>2. Page 1 – RFI / WIR</h2>
+      <div class="row">
+        <div>
+          <label for="rfiRef">RFI / WIR Ref. No.</label>
+          <input type="text" id="rfiRef" />
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="mosRef">MoS Ref. No.</label>
+          <input type="text" id="mosRef" />
+        </div>
+        <div>
+          <label for="itpRef">ITP / FQP Ref. No.</label>
+          <input type="text" id="itpRef" />
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="iclRef">ICL Ref. No.</label>
+          <input type="text" id="iclRef" />
+        </div>
+        <div>
+          <label for="zone">Zone</label>
+          <input type="text" id="zone" placeholder="MDA 29 to MDA 30" />
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="inspDate">PC/OE Inspection Date</label>
+          <input type="date" id="inspDate" />
+        </div>
+        <div>
+          <label for="inspTime">PC/OE Inspection Time</label>
+          <input type="text" id="inspTime" placeholder="HH:MM" />
+        </div>
+      </div>
+      <div>
+        <label for="subDate">RFI Submission Date</label>
+        <input type="date" id="subDate" />
+      </div>
+      <div class="row" style="margin-top:6px;">
+        <div>
+          <label for="itpItem">ITP Item / Sr. No.</label>
+          <input type="text" id="itpItem" />
+        </div>
+        <div>
+          <label for="pcOwner">PC / Owner</label>
+          <input type="text" id="pcOwner" value="SW+R" />
+        </div>
+      </div>
+      <div style="margin-top:6px;">
+        <label for="desc">Description of Inspection</label>
+        <textarea id="desc" placeholder="Auto‑filled from ITP description"></textarea>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. Page 2 – Checklist Header</h2>
+      <div class="row">
+        <div>
+          <label for="p2Icl">ICL No.</label>
+          <input type="text" id="p2Icl" />
+        </div>
+        <div>
+          <label for="p2Mos">MoS No.</label>
+          <input type="text" id="p2Mos" />
+        </div>
+      </div>
+      <div class="row" style="margin-top:6px;">
+        <div>
+          <label for="p2Itp">ITP No.</label>
+          <input type="text" id="p2Itp" />
+        </div>
+        <div>
+          <label for="p2Rfi">RFI No.</label>
+          <input type="text" id="p2Rfi" />
+        </div>
+      </div>
+      <div class="row" style="margin-top:6px;">
+        <div>
+          <label for="p2InspDate">Inspection Date</label>
+          <input type="date" id="p2InspDate" />
+        </div>
+        <div>
+          <label for="location">Location (from → to)</label>
+          <input type="text" id="location" placeholder="MDA29 TO MDA30" />
+        </div>
+      </div>
+      <div class="row" style="margin-top:6px;">
+        <div>
+          <label for="wtgNo">WTG No.</label>
+          <input type="text" id="wtgNo" placeholder="29/30" />
+        </div>
+        <div>
+          <label for="loopNo">Loop No.</label>
+          <input type="text" id="loopNo" placeholder="LOOP 16 AND F.O RING.4" />
+        </div>
+      </div>
+      <div style="margin-top:6px;">
+        <label for="p2ItpItem">ITP Item / Sr. No.</label>
+        <input type="text" id="p2ItpItem" />
+      </div>
+    </section>
+
+    <section>
+      <h2>4. Generate Word File</h2>
+      <div id="exportStatus" class="status"></div>
+    </section>
+  </main>
+
+  <div class="btn-bar">
+    <button class="btn btn-secondary" id="resetBtn">Reset</button>
+    <button class="btn btn-primary" id="genBtn">Generate DOCX</button>
+  </div>
+
+  <script src="https://unpkg.com/docx@9.5.1/build/index.js"></script>
+  <script>
+    const GLOBAL_REFS = {"ITP NO.": "EGY2001-G000-___-&EQA-00001", "MOS": "EGY2001-G000-___-&EDC-00001", "ICL": "EGY2001-G000-___-&EDC-00004"};
+    const ACTIVITIES = [
+      {activity: "Excavation", itp_point: "6.1", description: "Check Trench Excavation as per drawing", rfi_code: "EGY2001-MV-EL-EX-RFI-0000x"},
+      {activity: "Sand Bed + Cable Laying", itp_point: "5 / 6.2", description: "Sand Bedding with Cable Laying & dressing", rfi_code: "EGY2001-MV-EL-CL-RFI-0000x"},
+      {activity: "Sand Cover + Earthing", itp_point: "6.3", description: "Sand Cover with Earthing Conductor Laying", rfi_code: "EGY2001-MV-EL-SC-RFI-0000x"},
+      {activity: "First Backfill + Warning Tape", itp_point: "6.4", description: "First Backfill With Warning Tape", rfi_code: "EGY2001-MV-EL-BF-RFI-0000x"},
+      {activity: "Final Backfill", itp_point: "6.5", description: "Final Backfill", rfi_code: "EGY2001-MV-EL-BF-RFI-0000x"},
+      {activity: "Excavation (Road crossing)", itp_point: "7.1", description: "Check Trench Excavation as per drawing", rfi_code: "EGY2001-MV-EL-RC-RFI-0000x"},
+      {activity: "HDPE Pipes", itp_point: "7.2", description: "Check material for HDPE pipes and dimensions", rfi_code: "EGY2001-MV-EL-RC-RFI-0000x"},
+      {activity: "Concrete", itp_point: "7.3", description: "Check the dimension for concrete", rfi_code: "EGY2001-MV-EL-RC-RFI-0000x"},
+      {activity: "First Backfill + Warning Tape (Road crossing)", itp_point: "7.4", description: "First Backfill With Warning Tape", rfi_code: "EGY2001-MV-EL-RC-RFI-0000x"},
+      {activity: "Final Backfill (Road crossing)", itp_point: "7.5", description: "Final Backfill", rfi_code: "EGY2001-MV-EL-RC-RFI-0000x"},
+      {activity: "Jointing", itp_point: "8", description: "MV & FO Cable Jointing Works", rfi_code: "EGY2001-MV-EL-JO-RFI-0000x"},
+      {activity: "Termination", itp_point: "8", description: "MV & FO Cable Termination Works", rfi_code: "EGY2001-MV-EL-TR-RFI-0000x"}
+    ];
+
+    const activitySelect = document.getElementById('activitySelect');
+    const actInfo = document.getElementById('actInfo');
+
+    function onActivityChange() {
+      const idx = parseInt(activitySelect.value, 10);
+      if (isNaN(idx) || idx < 0 || idx >= ACTIVITIES.length) {
+        actInfo.textContent = 'Select an activity.';
+        return;
+      }
+      const a = ACTIVITIES[idx];
+      const itpNo = GLOBAL_REFS['ITP NO.'] || '';
+      const mos   = GLOBAL_REFS['MOS'] || '';
+      const icl   = GLOBAL_REFS['ICL'] || '';
+      document.getElementById('itpItem').value   = a.itp_point;
+      document.getElementById('p2ItpItem').value = a.itp_point;
+      document.getElementById('itpRef').value    = itpNo;
+      document.getElementById('p2Itp').value     = itpNo;
+      document.getElementById('mosRef').value    = mos;
+      document.getElementById('p2Mos').value     = mos;
+      document.getElementById('iclRef').value    = icl;
+      document.getElementById('p2Icl').value     = icl;
+      document.getElementById('rfiRef').value    = a.rfi_code || '';
+      document.getElementById('p2Rfi').value     = a.rfi_code || '';
+      document.getElementById('desc').value      = a.description || '';
+      const warn = a.rfi_code ? '' : '  ⚠ No RFI code in ITP – fill manually';
+      actInfo.textContent = `ITP ${a.itp_point}: ${a.description}${warn}`;
+    }
+
+    activitySelect.addEventListener('change', onActivityChange);
+    window.addEventListener('DOMContentLoaded', () => {
+      activitySelect.value = '1';
+      onActivityChange();
+    });
+
+    function get(id) { return document.getElementById(id).value || ''; }
+
+    async function generateDocx() {
+      const d = {
+        rfiRef: get('rfiRef'), mosRef: get('mosRef'), itpRef: get('itpRef'), iclRef: get('iclRef'),
+        zone: get('zone'), inspDate: get('inspDate'), inspTime: get('inspTime'), subDate: get('subDate'),
+        itpItem: get('itpItem'), pcOwner: get('pcOwner'), desc: get('desc'),
+        p2Icl: get('p2Icl'), p2Mos: get('p2Mos'), p2Itp: get('p2Itp'), p2Rfi: get('p2Rfi'),
+        p2InspDate: get('p2InspDate'), location: get('location'), wtgNo: get('wtgNo'),
+        loopNo: get('loopNo'), p2ItpItem: get('p2ItpItem'),
+      };
+
+      const { Document, Packer, Paragraph, Table, TableRow, TableCell } = docx;
+
+      const rows1 = [
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('RFI / WIR Ref. No.')] }), new TableCell({ children: [ new Paragraph(d.rfiRef || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('MoS Ref. No.')] }),      new TableCell({ children: [ new Paragraph(d.mosRef || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('ITP / FQP Ref. No.')] }), new TableCell({ children: [ new Paragraph(d.itpRef || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('ICL Ref. No.')] }),      new TableCell({ children: [ new Paragraph(d.iclRef || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('Zone')] }),              new TableCell({ children: [ new Paragraph(d.zone || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('Inspection Date / Time')] }), new TableCell({ children: [ new Paragraph(`${d.inspDate}  ${d.inspTime}`.trim()) ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('Submission Date')] }),   new TableCell({ children: [ new Paragraph(d.subDate || '') ] }) ] }),
+      ];
+
+      const rows2 = [
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('ITP Item / Sr. No.')] }), new TableCell({ children: [ new Paragraph(d.itpItem || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('PC / Owner')] }),       new TableCell({ children: [ new Paragraph(d.pcOwner || '') ] }) ] }),
+      ];
+
+      const rows3 = [
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('ICL No.')] }),           new TableCell({ children: [ new Paragraph(d.p2Icl || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('MoS No.')] }),           new TableCell({ children: [ new Paragraph(d.p2Mos || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('ITP No.')] }),           new TableCell({ children: [ new Paragraph(d.p2Itp || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('RFI No.')] }),           new TableCell({ children: [ new Paragraph(d.p2Rfi || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('Inspection Date')] }),   new TableCell({ children: [ new Paragraph(d.p2InspDate || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('Location (from → to)')] }), new TableCell({ children: [ new Paragraph(d.location || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('WTG No.')] }),           new TableCell({ children: [ new Paragraph(d.wtgNo || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('Loop No.')] }),          new TableCell({ children: [ new Paragraph(d.loopNo || '') ] }) ] }),
+        new TableRow({ children: [ new TableCell({ children: [new Paragraph('ITP Item / Sr. No.')] }), new TableCell({ children: [ new Paragraph(d.p2ItpItem || '') ] }) ] }),
+      ];
+
+      const doc = new Document({
+        sections: [{
+          properties: { margin: { top: 720, right: 720, bottom: 720, left: 720 } },
+          children: [
+            new Paragraph({ text: 'REQUEST FOR INSPECTION / WORK INSPECTION REQUEST (RFI / WIR)', bold: true }),
+            new Paragraph(''),
+            new Table({ rows: rows1 }),
+            new Paragraph(''),
+            new Table({ rows: rows2 }),
+            new Paragraph(''),
+            new Paragraph({ text: 'Description of Inspection', bold: true }),
+            new Paragraph(d.desc || ''),
+            new Paragraph(''),
+            new Paragraph({ text: 'Inspection Checklist Header (Page 2)', bold: true }),
+            new Table({ rows: rows3 }),
+          ],
+        }],
+      });
+
+      const blob = await Packer.toBlob(doc);
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const today = new Date().toISOString().slice(0,10);
+      a.href = url;
+      a.download = `RFI_${today}.docx`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      const el = document.getElementById('exportStatus');
+      el.textContent = 'DOCX generated and downloaded to your device.';
+      el.className = 'status ok';
+    }
+
+    document.getElementById('genBtn').addEventListener('click', generateDocx);
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      document.querySelectorAll('input[type=text], input[type=date], textarea').forEach(el => el.value = '');
+      activitySelect.value = '1';
+      onActivityChange();
+      document.getElementById('exportStatus').textContent = '';
+    });
+  </script>
+</body>
+</html>
