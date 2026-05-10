@@ -313,7 +313,7 @@
       return document.getElementById(id).value || '';
     }
 
-    // Export main area HTML to a .doc file (Word‑openable) – no external libs
+    // Export main area HTML to a .doc file – iOS‑aware
     function generateDoc() {
       var elementId = 'exportArea';
 
@@ -333,17 +333,25 @@
         'data:application/vnd.ms-word;charset=utf-8,' +
         encodeURIComponent(sourceHTML);
 
-      var fileDownload = document.createElement("a");
-      document.body.appendChild(fileDownload);
-      fileDownload.href = source;
-
       var today = new Date().toISOString().slice(0, 10);
-      fileDownload.download = 'RFI_' + today + '.doc';
-      fileDownload.click();
-      document.body.removeChild(fileDownload);
+      var filename = 'RFI_' + today + '.doc';
+
+      var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+      if (isIOS) {
+        // iOS Safari: download attribute on data: URLs is ignored, so just navigate
+        window.location.href = source;
+      } else {
+        var fileDownload = document.createElement("a");
+        document.body.appendChild(fileDownload);
+        fileDownload.href = source;
+        fileDownload.download = filename;
+        fileDownload.click();
+        document.body.removeChild(fileDownload);
+      }
 
       var el = document.getElementById('exportStatus');
-      el.textContent = 'DOC file generated and downloaded to your device.';
+      el.textContent = 'DOC content generated. Open it in Word / WPS on your phone.';
       el.className = 'status ok';
     }
 
@@ -355,8 +363,9 @@
 
       activitySelect.value = '1';
       onActivityChange();
-      document.getElementById('exportStatus').textContent = '';
-      document.getElementById('exportStatus').className = 'status';
+      var st = document.getElementById('exportStatus');
+      st.textContent = '';
+      st.className = 'status';
     });
   </script>
 </body>
