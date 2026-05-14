@@ -56,6 +56,11 @@ label.cb{display:inline-flex;align-items:center;gap:2px;cursor:pointer;white-spa
   input[type=checkbox]{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
 }
 </style>
+
+<style>
+.date-inline{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;}
+</style>
+
 </head>
 <body>
 
@@ -102,7 +107,7 @@ async function loadExcelDatabase() {
   const statusElem = document.getElementById("db_status");
   try {
     // Fetch the Excel file directly from the GitHub repo
-    const response = await fetch('itp for mv.xlsx');
+    const response = await fetch('itp-for-mv.xlsx');
     if (!response.ok) throw new Error("File not found");
 
     const arrayBuffer = await response.arrayBuffer();
@@ -152,20 +157,19 @@ async function loadExcelDatabase() {
 function autoFillForm() {
   const selection = document.getElementById("activity_dropdown").value;
   if (!selection || !itpDatabase[selection]) return;
-
   const data = itpDatabase[selection];
 
   const rfiElem = document.getElementById("auto_rfi");
-  if(rfiElem) rfiElem.innerText = data.rfi;
+  if (rfiElem) rfiElem.value = data.rfi;
 
   const descElem = document.getElementById("auto_desc");
-  if(descElem) descElem.innerText = data.desc;
+  if (descElem) descElem.value = data.desc;
 
   const itp1 = document.getElementById("auto_itp1");
-  if(itp1) itp1.innerText = data.itp;
+  if (itp1) itp1.value = data.itp;
 
   const itp2 = document.getElementById("auto_itp2");
-  if(itp2) itp2.innerText = data.itp;
+  if (itp2) itp2.value = data.itp;
 }
 
 // Load the Excel file as soon as the page loads
@@ -214,7 +218,7 @@ window.onload = loadExcelDatabase;
       REQUEST FOR INSPECTION / WORK INSPECTION REQUEST (RFI/WIR)
     </td>
     <td style="background:var(--lb);font-size:7pt;padding:1px 2px;"><strong>RFI/WIR Ref. No.</strong></td>
-    <td style="font-size:8pt;padding:1px 3px;"><strong id="auto_rfi">EGY2001-MV-EL-CL-RFI-00007</strong></td>
+    <td style="font-size:8pt;padding:1px 3px;"><input id="auto_rfi" type="text" value="EGY2001-MV-EL-CL-RFI-00007" style="width:100%;border:none;background:transparent;font:inherit;font-weight:bold;outline:none;padding:0;"></td>
   </tr>
   <tr style="height:1.27mm;">
     <td style="background:var(--lb);font-size:7pt;padding:1px 2px;"><strong>MoS Ref. No.</strong></td>
@@ -260,7 +264,7 @@ window.onload = loadExcelDatabase;
     <td style="background:#CECECE;text-align:center;border:.5px solid #000;padding:1px 2px;font-size:8pt;">PC /Owner</td>
   </tr>
   <tr style="height:7.21mm;">
-    <td id="auto_itp1" style="background:#CECECE;text-align:center;border:.5px solid #000;padding:1px 3px;font-size:8pt;">5 / 6.2</td>
+    <td style="background:#CECECE;text-align:center;border:.5px solid #000;padding:1px 3px;font-size:8pt;"><input id="auto_itp1" type="text" value="5 / 6.2" style="width:100%;border:none;background:transparent;font:inherit;text-align:center;outline:none;padding:0;"></td>
     <td style="background:#CECECE;text-align:center;border:.5px solid #000;padding:1px 2px;font-size:8pt;">H</td>
     <td style="background:#CECECE;text-align:center;border:.5px solid #000;padding:1px 2px;font-size:8pt;">H</td>
     <td style="background:#CECECE;text-align:center;border:.5px solid #000;padding:1px 2px;font-size:8pt;">N/A</td>
@@ -274,7 +278,7 @@ window.onload = loadExcelDatabase;
     <col style="width:15%"><col style="width:20.5%"><col style="width:18.8%">
     <col style="width:22.7%"><col style="width:23%">
   </colgroup>
-  <tr><td colspan="3" style="font-weight;"><strong>Location/Area:</strong> South Plot</td><td><strong>Zone:</strong></td><td><strong>MDA 28 to MDA 29</strong></td></tr>
+  <tr><td colspan="3" style="font-weight;"><strong>Location/Area:</strong> South Plot</td><td><strong>Zone:</strong></td><td><strong><input id="zone_input" type="text" value="MDA 28 to MDA 29" style="width:100%;border:1px solid #999;background:#fff;font:inherit;padding:2px 4px;box-sizing:border-box;"></strong></td></tr>
   <tr><td colspan="3" style="font-weight;"><strong>Contact person:</strong> N/A</td><td><strong>Telephone no.</strong></td><td>N/A</td></tr>
   <tr><td colspan="3" style="font-weight;"><strong>Block:</strong> N/A</td><td><strong>Structure:</strong></td><td></td></tr>
   <tr><td><strong>Element:</strong></td><td>N/A</td><td></td><td><strong>Drawing Nos:</strong></td><td style="font-size:7pt;">EGY2001-W101-AHA-&amp;ELD-10001</td></tr>
@@ -288,9 +292,9 @@ window.onload = loadExcelDatabase;
   </tr>
   <tr>
     <td><strong>PC/OE Inspection</strong></td>
-    <td><strong>Date: 21/02/2026</strong></td>
+    <td><strong>Date: <input id="pc_oe_date" type="text" value="" placeholder="dd/mm/yyyy" style="width:95px;border:1px solid #999;background:#fff;font:inherit;padding:1px 3px;box-sizing:border-box;"></strong></td>
     <td><strong>Time:</strong></td>
-    <td colspan="2"><strong>RFI Submission Date: 21/02/2026</strong></td>
+    <td colspan="2"><strong></span><span class="date-inline">RFI Submission Date: <input id="rfi_date" type="text" value="" placeholder="dd/mm/yyyy" style="width:95px;border:1px solid #999;background:#fff;font:inherit;padding:1px 3px;box-sizing:border-box;"> 21/02/2026</strong></span></td>
   </tr>
   <tr>
     <td colspan="5" style="padding:1px 3px;font-size:7.5pt;font-weight:bold;border-bottom:none;">
@@ -318,7 +322,7 @@ window.onload = loadExcelDatabase;
   <tr style="height:16.14mm;">
     <td style="vertical-align:top;padding:2px 3px;">
       <strong>Description of Inspection:</strong><br>
-      <strong id="auto_desc">Checking Sand Bedding with Cable Laying &amp; dressing for the MV cable from MDA 28 to MDA 29</strong>
+      <textarea id="auto_desc" style="width:100%;min-height:48px;border:1px solid #999;background:#fff;font:inherit;resize:vertical;padding:4px;box-sizing:border-box;">Checking Sand Bedding with Cable Laying &amp; dressing for the MV cable from MDA 28 to MDA 29</textarea>
     </td>
   </tr>
 </table>
@@ -531,7 +535,7 @@ window.onload = loadExcelDatabase;
     <td style="background:#CECECE;text-align:center;border:.5px solid #000;padding:1px 2px;font-size:8pt;">PC /Owner</td>
   </tr>
   <tr style="height:7.32mm;">
-    <td id="auto_itp1" style="background:#CECECE;text-align:center;border:.5px solid #000;padding:1px 3px;font-size:8pt;">5 / 6.2</td>
+    <td style="background:#CECECE;text-align:center;border:.5px solid #000;padding:1px 3px;font-size:8pt;"><input id="auto_itp1" type="text" value="5 / 6.2" style="width:100%;border:none;background:transparent;font:inherit;text-align:center;outline:none;padding:0;"></td>
     <td style="background:#CECECE;text-align:center;border:.5px solid #000;padding:1px 2px;font-size:8pt;">H</td>
     <td style="background:#CECECE;text-align:center;border:.5px solid #000;padding:1px 2px;font-size:8pt;">H</td>
     <td style="background:#CECECE;text-align:center;border:.5px solid #000;padding:1px 2px;font-size:8pt;">N/A</td>
@@ -574,6 +578,19 @@ window.onload = loadExcelDatabase;
     &#128438; Print / Save as PDF
   </button>
 </div>
+
+
+<script>
+function linkDates() {
+  const a = document.getElementById('pc_oe_date');
+  const b = document.getElementById('rfi_date');
+  if (!a || !b) return;
+  const sync = (src, dst) => { dst.value = src.value; };
+  a.addEventListener('input', () => sync(a, b));
+  b.addEventListener('input', () => sync(b, a));
+}
+window.addEventListener('load', linkDates);
+</script>
 
 </body>
 </html>
