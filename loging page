@@ -1,1 +1,116 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RFI Filler – Login</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Arial, sans-serif;
+    background: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .login-box {
+    background: #ffffff;
+    padding: 40px 36px;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    width: 340px;
+    text-align: center;
+  }
+  .login-box h2 {
+    font-size: 15pt;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+  }
+  .login-box p {
+    font-size: 8.5pt;
+    color: #666;
+    margin-bottom: 24px;
+  }
+  .login-box input[type="password"] {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 11pt;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    margin-bottom: 14px;
+    transition: border 0.2s;
+    letter-spacing: 3px;
+  }
+  .login-box input[type="password"]:focus {
+    border-color: #A6A6A6;
+  }
+  .login-box button {
+    width: 100%;
+    padding: 10px;
+    background: #1a1a2e;
+    color: #fff;
+    font-size: 11pt;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .login-box button:hover { background: #2d2d5e; }
+  .error-msg {
+    color: #c0392b;
+    font-size: 8.5pt;
+    margin-top: 10px;
+    display: none;
+  }
+  .logo {
+    font-size: 22pt;
+    font-weight: bold;
+    color: #1a1a2e;
+    margin-bottom: 6px;
+    letter-spacing: 2px;
+  }
+  .badge {
+    display: inline-block;
+    background: #E6E6E6;
+    color: #555;
+    font-size: 7pt;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="login-box">
+  <div class="logo">RFI</div>
+  <div class="badge">MV Cable Laying – EGY2001</div>
+  <h2>Secure Access</h2>
+  <p>Enter your password to access the RFI form</p>
+  <input type="password" id="pwd" placeholder="Password" onkeydown="if(event.key==='Enter')checkLogin()"/>
+  <button onclick="checkLogin()">LOGIN</button>
+  <div class="error-msg" id="err">❌ Incorrect password. Please try again.</div>
+</div>
+
+<script>
+  // Change the password below
+  const PASS = "RFI2026";
+
+  function checkLogin() {
+    const input = document.getElementById('pwd').value;
+    if (input === PASS) {
+      sessionStorage.setItem('rfi_auth', 'true');
+      window.location.href = 'form.html';
+    } else {
+      const err = document.getElementById('err');
+      err.style.display = 'block';
+      document.getElementById('pwd').value = '';
+      document.getElementById('pwd').focus();
+    }
+  }
+</script>
+</body>
+</html>
