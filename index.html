@@ -124,27 +124,30 @@ input[type="text"]:focus, textarea:focus {
 
 <!-- ══════════ PAGE 1 ══════════ -->
 <div class="page" id="page1">
-<!-- ── LOGO BANNER ── -->
+<!-- ── HEADER BANNER (FROM PDF TEXT) ── -->
 <table style="border:1px solid #000;table-layout:fixed;border-collapse:collapse;margin-bottom:0;">
   <colgroup><col style="width:28%"><col style="width:36%"><col style="width:36%"></colgroup>
   <tr>
-    <td rowspan="2" style="padding:3px 4px;vertical-align:middle;text-align:center;border:.5px solid #000;">
-      <div style="font-size:7pt;font-weight:bold;text-align:left;">Owner/PC</div>
-      <div style="height:40px; background:#f0f0f0; display:flex; align-items:center; justify-content:center; color:#888; font-size:10px;">[Owner Logo Placeholder]</div>
+    <td rowspan="2" style="padding:6px 4px;vertical-align:top;text-align:center;border:.5px solid #000;">
+      <div style="font-size:7pt;font-weight:bold;text-align:left;">Owner/PC:</div>
+      <div style="font-size:9pt;font-weight:bold;margin-top:4px;">Suez 1.1GW Wind Power Project</div>
     </td>
     <td style="padding:3px 4px;vertical-align:top;border:.5px solid #000;">
       <div style="font-size:6.5pt;color:#555;">Project Name:</div>
       <div style="font-size:10pt;font-weight:bold;line-height:1.2;margin-top:2px;">Suez 1.1GW Wind Power Project</div>
     </td>
-    <td style="padding:3px 4px;vertical-align:top;border:.5px solid #000;">
-      <div style="font-size:7pt;font-weight:bold;margin-bottom:2px;">EPC:</div>
-      <div style="height:30px; background:#f0f0f0; display:flex; align-items:center; justify-content:center; color:#888; font-size:10px;">[EPC Logo Placeholder]</div>
+    <td style="padding:6px 4px;vertical-align:top;border:.5px solid #000;text-align:center;">
+      <div style="font-size:7pt;font-weight:bold;margin-bottom:2px;text-align:left;">EPC:</div>
+      <div style="font-weight:bold;font-size:8pt;">POWERCHINA INTERNATIONAL GROUP LIMITED</div>
+      <div style="font-size:8pt;">EGYPT BRANCH</div>
+      <div style="font-size:8pt;margin-top:2px;">中国电建集团国际工程有限公司埃及分公司</div>
     </td>
   </tr>
   <tr>
-    <td style="padding:3px 4px;vertical-align:middle;text-align:center;border:.5px solid #000;">
+    <td style="padding:6px 4px;vertical-align:top;text-align:center;border:.5px solid #000;">
       <div style="font-size:6.5pt;color:#555;margin-bottom:2px;text-align:left;">Consultant / TPI:</div>
-       <div style="height:20px; background:#f0f0f0; display:flex; align-items:center; justify-content:center; color:#888; font-size:10px;">[Consultant Logo Placeholder]</div>
+      <div style="font-weight:bold;font-size:8pt;">Suez Wind Energy</div>
+      <div style="font-size:8pt;margin-top:2px;">Mercados-Aries (MAI)</div>
     </td>
     <td style="padding:3px 4px;vertical-align:middle;border:.5px solid #000;font-size:8pt;">
       Subcontractor: <strong>ACCURATE</strong>
@@ -165,11 +168,11 @@ input[type="text"]:focus, textarea:focus {
   </tr>
   <tr style="height:1.27mm;">
     <td style="background:var(--lb);font-size:7pt;padding:1px 2px;"><strong>MoS Ref. No.</strong></td>
-    <td style="font-size:8pt;padding:1px 3px;">EGY2001-G000-___-&amp;EDC-00001</td>
+    <td style="font-size:8pt;padding:1px 3px;">EGY2001-G000--&amp;EDC-00001</td>
   </tr>
   <tr style="height:1.27mm;">
     <td style="background:var(--lb);font-size:7pt;padding:1px 2px;"><strong>ITP/FQP Ref. No.</strong></td>
-    <td style="font-size:8pt;padding:1px 3px;">EGY2001-G000-___-&amp;EQA-00001</td>
+    <td style="font-size:8pt;padding:1px 3px;">EGY2001-G000--&amp;EQA-00001</td>
   </tr>
   <tr style="height:1.27mm;">
     <td style="background:#fff;padding:1px 3px;font-size:8pt;">
@@ -185,7 +188,7 @@ input[type="text"]:focus, textarea:focus {
       <span style="font-size:6.5pt;">&nbsp;(pls specify)</span>
     </td>
     <td style="background:var(--lb);font-size:7pt;padding:1px 2px;"><strong>ICL Ref. No.</strong></td>
-    <td style="font-size:8pt;padding:1px 3px;">EGY2001-G000-___-&amp;EDC-00004</td>
+    <td style="font-size:8pt;padding:1px 3px;">EGY2001-G000--&amp;EDC-00004</td>
   </tr>
 </table>
 
@@ -235,9 +238,9 @@ input[type="text"]:focus, textarea:focus {
   </tr>
   <tr>
     <td><strong>PC/OE Inspection</strong></td>
-    <td><strong>Date: <input id="pc_oe_date" type="text" value="" placeholder="dd/mm/yyyy" style="width:95px;border:none;background:transparent;font:inherit;padding:1px 3px;box-sizing:border-box;"></strong></td>
+    <td><strong>Date: <input id="pc_oe_date" type="text" value="21/02/2026" placeholder="dd/mm/yyyy" style="width:95px;border:none;background:transparent;font:inherit;padding:1px 3px;box-sizing:border-box;"></strong></td>
     <td><strong>Time:</strong></td>
-    <td colspan="2"><strong><span class="date-inline">RFI Submission Date: <input id="rfi_date" type="text" value="" placeholder="dd/mm/yyyy" style="width:95px;border:none;background:transparent;font:inherit;padding:1px 3px;box-sizing:border-box;"></span></strong></td>
+    <td colspan="2"><strong><span class="date-inline">RFI Submission Date: <input id="rfi_date" type="text" value="21/02/2026" placeholder="dd/mm/yyyy" style="width:95px;border:none;background:transparent;font:inherit;padding:1px 3px;box-sizing:border-box;"></span></strong></td>
   </tr>
   <tr>
     <td colspan="5" style="padding:1px 3px;font-size:7.5pt;font-weight:bold;border-bottom:none;">
@@ -246,9 +249,9 @@ input[type="text"]:focus, textarea:focus {
   </tr>
   <tr>
     <td colspan="5" style="padding:1px 3px;font-size:6.5pt;white-space:nowrap;overflow:hidden;border-top:none;">
-      <label class="cb" style="margin-left:5px;"><input type="checkbox">&nbsp;ICL</label>
-      <label class="cb" style="margin-right:5px;"><input type="checkbox">&nbsp;DWGs</label>
-      <label class="cb" style="margin-right:5px;"><input type="checkbox">&nbsp;Survey Rept.</label>
+      <label class="cb" style="margin-left:5px;"><input type="checkbox" checked>&nbsp;ICL</label>
+      <label class="cb" style="margin-right:5px;"><input type="checkbox" checked>&nbsp;DWGs</label>
+      <label class="cb" style="margin-right:5px;"><input type="checkbox" checked>&nbsp;Survey Rept.</label>
       <label class="cb" style="margin-right:5px;"><input type="checkbox">&nbsp;MTC's/ Test Rept.</label>
       <label class="cb" style="margin-left:5px;"><input type="checkbox">&nbsp;Packing list</label>
       <label class="cb" style="margin-right:5px;"><input type="checkbox">&nbsp;Shipping doc.</label>
@@ -347,6 +350,7 @@ input[type="text"]:focus, textarea:focus {
   </tr>
 </table>
 
+<div style="font-size:7pt;text-align:right;margin-top:4px;">Form no. EGY2001-6000--&amp;AQA-00007</div>
 </div><!-- /page1 -->
 
 <!-- ══════════ PAGE 2 – ICL ══════════ -->
@@ -362,11 +366,11 @@ input[type="text"]:focus, textarea:focus {
   </tr>
   <tr>
     <td style="background:var(--lb);font-size:7pt;padding:1px 2px;"><strong>ICL No.</strong></td>
-    <td style="font-size:7pt;padding:1px 2px;">EGY2001-G000-___-&amp;EDC-00004</td>
+    <td style="font-size:7pt;padding:1px 2px;">EGY2001-G000--&amp;EDC-00004</td>
     <td style="background:var(--lb);font-size:7pt;padding:1px 2px;"><strong>MoS No.</strong></td>
-    <td style="font-size:7pt;padding:1px 2px;">EGY2001-G000-___-&amp;EDC-00001</td>
+    <td style="font-size:7pt;padding:1px 2px;">EGY2001-G000--&amp;EDC-00001</td>
     <td style="background:var(--lb);font-size:7pt;padding:1px 2px;"><strong>ITP No.</strong></td>
-    <td style="font-size:7pt;padding:1px 2px;">EGY2001-G000-___-&amp;EQA-00001</td>
+    <td style="font-size:7pt;padding:1px 2px;">EGY2001-G000--&amp;EQA-00001</td>
   </tr>
   <tr>
     <td style="background:var(--lb);font-size:7pt;padding:1px 2px;"><strong>RFI No.</strong></td>
@@ -377,7 +381,7 @@ input[type="text"]:focus, textarea:focus {
     <td style="font-size:7pt;padding:1px 2px;"><strong>Electrical</strong></td>
     <td style="background:var(--lb);font-size:7pt;padding:1px 2px;"><strong>Inspection Date &amp; Time</strong></td>
     <td style="font-size:7pt;padding:1px 2px;">
-      <input id="auto_date_p2" type="text" value="" style="width:100%;border:none;background:transparent;font:inherit;font-weight:bold;outline:none;padding:0;">
+      <input id="auto_date_p2" type="text" value="21/02/2026" style="width:100%;border:none;background:transparent;font:inherit;font-weight:bold;outline:none;padding:0;">
     </td>
   </tr>
   <tr style="height:1.83mm;">
@@ -385,8 +389,8 @@ input[type="text"]:focus, textarea:focus {
     <td colspan="5" style="font-size:7pt;padding:1px 2px;">EGY2001-W101-AHA-&amp;EFA-10001 / EGY2001-W101-AHA-&amp;ELD-10003 / EGY2001-W101-AHA-&amp;ELD-10001</td>
   </tr>
   <tr style="height:1.99mm;">
-    <td colspan="2"><strong>Location:</strong> 
-      <input id="auto_loc_p2" type="text" value="MDA 28 to MDA 29" style="width:75%;border:none;background:transparent;font:inherit;outline:none;padding:0;">
+    <td colspan="2"><strong>Location of inspection:</strong> 
+      <input id="auto_loc_p2" type="text" value="from MDA 28 to MDA 29" style="width:70%;border:none;background:transparent;font:inherit;outline:none;padding:0;">
     </td>
     <td colspan="2"><strong>WTG NO:</strong> 28/39</td>
     <td colspan="2"><strong>Loop NO:</strong> LOOP 15</td>
@@ -394,7 +398,7 @@ input[type="text"]:focus, textarea:focus {
   <tr style="height:2.15mm;">
     <td colspan="6" style="font-size:7pt;">
       <strong>Supporting Doc.:</strong>&nbsp;
-      <label class="cb"><input type="checkbox">&nbsp;RFI</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;DWGs</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;Survey Rep.</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;MTC's/Test Rep.</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;Packing list</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;Shipping doc.</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;Delivery Rep.</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;Photos</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;Other</label>
+      <label class="cb"><input type="checkbox" checked>&nbsp;RFI</label> &nbsp;<label class="cb"><input type="checkbox" checked>&nbsp;DWGs</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;Survey Rep.</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;MTC's/Test Rep.</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;Packing list</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;Shipping doc.</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;Delivery Rep.</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;Photos</label> &nbsp;<label class="cb"><input type="checkbox">&nbsp;Other</label>
     </td>
   </tr>
   <tr style="height:3.83mm;">
@@ -427,50 +431,51 @@ input[type="text"]:focus, textarea:focus {
     </tr>
   </thead>
   <tbody style="color:#000;">
-    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">A</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">A – Material Verification</td></tr>
+    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">A</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">Material Verification</td></tr>
     <tr style="height:6.7mm;"><td style="text-align:center;padding:1px 2px;">A-1</td><td style="padding:1px 3px;">Galvanized Flat Steel 50×8 mm &amp; Zinc-rich paint MV &amp; FO Cables Warning tape</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">A-2</td><td style="padding:1px 3px;">Soft Sand</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     
-    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">B</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">B – Pre-Installation Checks</td></tr>
+    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">B</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">Pre-Installation Checks</td></tr>
     <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">B-1</td><td style="padding:1px 3px;">Trench excavation — Verify depth, width, alignment as per approved drawing</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.34mm;"><td style="text-align:center;padding:1px 2px;">B-2</td><td style="padding:1px 3px;">Sand bedding — Verify thickness, leveling</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
+    <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">B-3</td><td style="padding:1px 3px;">Route marking/tagging - Verify as per approved drawings</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.34mm;"><td style="text-align:center;padding:1px 2px;">B-4</td><td style="padding:1px 3px;">Underground utilities detection — Verify PTW and survey report</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">B-5</td><td style="padding:1px 3px;">Materials verification and MIR</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     
-    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">C</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">C – Cable Laying — MV Cables</td></tr>
+    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">C</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">Cable Laying — MV Cables</td></tr>
     <tr style="height:4.34mm;"><td style="text-align:center;padding:1px 2px;">C-1</td><td style="padding:1px 3px;">Cable pulling tension and bending radius — Verify as manufacturer limit and datasheet</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">C-2</td><td style="padding:1px 3px;">Cable rollers — spacing, no sharp edges</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.34mm;"><td style="text-align:center;padding:1px 2px;">C-3</td><td style="padding:1px 3px;">Cable identification — Verify marking (R/Y/B)</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">C-4</td><td style="padding:1px 3px;">Spare length at WTG entrance and inside WTG — Verify as per vendor requirement</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     
-    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">D</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">D – Cable Laying — FO Cables</td></tr>
+    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">D</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">Cable Laying — FO Cables</td></tr>
     <tr style="height:4.34mm;"><td style="text-align:center;padding:1px 2px;">D-1</td><td style="padding:1px 3px;">FO drum handling — Verify lifting, rotation direction</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">D-2</td><td style="padding:1px 3px;">FO cable laying — Manual placement on sand bed, no tension</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.34mm;"><td style="text-align:center;padding:1px 2px;">D-3</td><td style="padding:1px 3px;">Bending radius — As per manufacturer</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.34mm;"><td style="text-align:center;padding:1px 2px;">D-4</td><td style="padding:1px 3px;">Identification and marking</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     
-    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">E</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">E – Earthing Conductor Installation</td></tr>
+    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">E</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">Earthing Conductor Installation</td></tr>
     <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">E-1</td><td style="padding:1px 3px;">Conductor laying — Verify routing on sand cover as per drawing</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.34mm;"><td style="text-align:center;padding:1px 2px;">E-2</td><td style="padding:1px 3px;">Joint preparation — Clean surfaces, remove zinc layer</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">E-3</td><td style="padding:1px 3px;">Exothermic welding — Verify mold alignment, powder quantity, ignition</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.34mm;"><td style="text-align:center;padding:1px 2px;">E-4</td><td style="padding:1px 3px;">Post-weld treatment — Remove slag, apply zinc-rich paint</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     
-    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">F</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">F – Backfilling &amp; Protection</td></tr>
+    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">F</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">Backfilling &amp; Protection</td></tr>
     <tr style="height:4.34mm;"><td style="text-align:center;padding:1px 2px;">F-1</td><td style="padding:1px 3px;">First backfill — Verify material, warning tape placement</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">F-2</td><td style="padding:1px 3px;">Final backfill — Verify compaction</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.34mm;"><td style="text-align:center;padding:1px 2px;">F-3</td><td style="padding:1px 3px;">Road/wadi crossings — Verify HDPE/UPVC pipe installation and protection</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     
-    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">G</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">G – Cable Termination &amp; Jointing</td></tr>
-    <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">G-1</td><td style="padding:1px 3px;">Jointing kit verification — Check type, rating, expiry date</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
+    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">G</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">Cable Termination &amp; Jointing</td></tr>
+    <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">G-1</td><td style="padding:1px 3px;">Jointing kit verification Check type, rating, expiry date</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.34mm;"><td style="text-align:center;padding:1px 2px;">G-2</td><td style="padding:1px 3px;">Torque checks — Verify bolted connections with marking</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">G-3</td><td style="padding:1px 3px;">Phasing &amp; continuity — Verify before termination</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
     
-    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">H</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">H – Testing &amp; Pre-Commissioning</td></tr>
+    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">H</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">Testing &amp; Pre-Commissioning</td></tr>
     <tr style="height:4.34mm;"><td style="text-align:center;padding:1px 2px;">H-1</td><td style="padding:1px 3px;">Continuity test / IR test / OTDR test / VLF test</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;">Once per cable</td><td style="padding:1px 3px;"></td></tr>
     
-    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">I</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">I – Final Documentation &amp; Handover</td></tr>
-    <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">I-1</td><td style="padding:1px 3px;">Test reports — Verify all tests signed and attached</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
-    <tr style="height:4.69mm;"><td style="text-align:center;padding:1px 2px;">I-2</td><td style="padding:1px 3px;">Punch list closure — Verify all items resolved</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
+    <tr style="height:4.34mm;"><td style="text-align:center;background:#C6D9F0;font-weight:bold;padding:1px 2px;">I</td><td colspan="6" style="background:#C6D9F0;font-weight:bold;padding:1px 3px;">Final Documentation &amp; Handover</td></tr>
+    <tr style="height:4.16mm;"><td style="text-align:center;padding:1px 2px;">1-1</td><td style="padding:1px 3px;">Test reports — Verify all tests signed and attached</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
+    <tr style="height:4.69mm;"><td style="text-align:center;padding:1px 2px;">1-2</td><td style="padding:1px 3px;">Punch list closure — Verify all items resolved</td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="text-align:center;padding:1px;"><input type="checkbox"></td><td style="padding:1px 3px;font-size:7pt;"></td><td style="padding:1px 3px;"></td></tr>
   </tbody>
 </table>
 
