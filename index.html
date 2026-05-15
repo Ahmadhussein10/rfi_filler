@@ -129,7 +129,7 @@ async function loadExcelDatabase() {
   const statusElem = document.getElementById("db_status");
   try {
     // Fetch the Excel file directly from the GitHub repo
-    const response = await fetch('itp-for-mv.xlsx');
+    const response = await fetch('itp for mv.xlsx');
     if (!response.ok) throw new Error("File not found");
 
     const arrayBuffer = await response.arrayBuffer();
